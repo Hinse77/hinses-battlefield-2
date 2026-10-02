@@ -4,7 +4,7 @@ const redisUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_U
 const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
 const redis = redisUrl && redisToken ? new Redis({ url: redisUrl, token: redisToken }) : null;
 const difficulties = new Set(["easy", "normal", "hard", "extreme"]);
-const keys = { totals: "hinses-battlefield:analytics:totals", sessions: "hinses-battlefield:analytics:sessions", startedByDifficulty: "hinses-battlefield:analytics:started-by-difficulty", completedByDifficulty: "hinses-battlefield:analytics:completed-by-difficulty", startedByCountry: "hinses-battlefield:analytics:started-by-country" };
+const keys = { totals: "hinses-battlefield-2:analytics:totals", sessions: "hinses-battlefield-2:analytics:sessions", startedByDifficulty: "hinses-battlefield-2:analytics:started-by-difficulty", completedByDifficulty: "hinses-battlefield-2:analytics:completed-by-difficulty", startedByCountry: "hinses-battlefield-2:analytics:started-by-country" };
 const integer = (value: unknown) => Math.max(0, Number(value) || 0);
 
 async function stats() {

@@ -1,12 +1,12 @@
 {
-  "name": "Hinses Battlefield",
-  "short_name": "Battlefield",
-  "description": "A free browser arena strategy game: grow, outsmart hunters and bosses, and conquer the arena.",
+  "name": "Hinses Battlefield 2",
+  "short_name": "Battlefield 2",
+  "description": "A cinematic tactical browser arena: choose a doctrine, evolve and conquer a living battlefield.",
   "lang": "en",
   "categories": ["games", "entertainment", "strategy"],
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#04101a",
   "theme_color": "#071122",
-  "icons": [{ "src": "/hinses-battlefield-logo.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "icons": [{ "src": "./hinses-battlefield-logo.svg", "sizes": "any", "type": "image/svg+xml" }]
 }

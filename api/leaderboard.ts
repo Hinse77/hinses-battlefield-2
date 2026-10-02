@@ -6,7 +6,7 @@ const redisUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_U
 const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
 const redis = redisUrl && redisToken ? new Redis({ url: redisUrl, token: redisToken }) : null;
 // A new season starts with the Toxic Master release. Older score keys are intentionally retired.
-const keyFor = (difficulty: string) => `hinses-battlefield:hall:season-2:${difficulty}`;
+const keyFor = (difficulty: string) => `hinses-battlefield-2:hall:season-1:${difficulty}`;
 const clean = (value: unknown, max: number) => Math.max(0, Math.min(max, Number(value) || 0));
 
 export default async function handler(req: any, res: any) {

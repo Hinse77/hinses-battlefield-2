@@ -1,10 +1,18 @@
-# Hinses Battlefield
+# Hinses Battlefield 2 — Alpha Command
 
-Browser game built with TypeScript, Vite, and Canvas.
+An isolated next-generation branch of the TypeScript/Vite/Canvas arena game. Version 1 is intentionally untouched and can continue independently.
+
+## What is new in 2.0
+
+- Three combat doctrines: **Interceptor**, **Assimilator**, and **Aegis**.
+- A cinematic command-deck start screen and living arena atmosphere.
+- Distinct inner silhouettes for every organism family.
+- Separate browser storage, replay codes (`HB2-*`), Redis namespaces, Hall of Fame and balance telemetry.
+- Vanguard/Normal onboarding by default; Veteran and Apex remain advanced challenges.
 
 ## Publish with Vercel
 
-1. Upload this complete project structure to a GitHub repository, including the `src` and `public` folders.
+1. Create a separate GitHub repository named `hinses-battlefield-2` and upload this complete structure, including `src`, `public`, and `api`.
 2. Import the repository in Vercel.
 3. Use the default Vite settings: build command `npm run build`, output directory `dist`.
 4. Deploy.
@@ -15,11 +23,11 @@ Run `npm install` once, then `npm run dev`.
 
 ## Arena replay codes
 
-After a completed round, choose **Copy arena code** and send the short code to a friend. They paste it into the optional **Arena code** field on the start screen. The game automatically chooses the matching difficulty and creates the same initial food, opponent, and boss layout. The match itself still depends on each player's decisions, making the code a fair challenge rather than a prerecorded run.
+After a completed round, choose **Copy arena code** and send the `HB2-*` code to a friend. Version 1 codes are intentionally not accepted, preventing cross-version balance confusion.
 
 ## Shared leaderboard
 
-The game contains Vercel serverless APIs for the leaderboard and anonymous arena activity. Connect **Upstash Redis** through the Vercel Marketplace and redeploy to enable the shared Hall of Fame and counter. The counter records unique game sessions, started and completed rounds, wins, difficulty distribution, and the country associated with each round start; it stores neither player names nor IP addresses. Separate anonymous balance summaries are kept for Easy, Normal, Hard, and Very Hard, including pace, end mass, pressure phases, combos, boss defeats, poison damage and Chaotic blast impact. Without Redis, the game safely falls back to local browser records.
+The game contains Vercel serverless APIs for its leaderboard and anonymous arena activity. Connect **Upstash Redis** and redeploy to enable shared services. All Redis keys begin with `hinses-battlefield-2:` so the production data of Version 1 cannot be modified. Doctrine choice is included in anonymous balance telemetry alongside pace, end mass, combat, boss and phase signals. Without Redis, the game safely falls back to its own `hb2-*` browser records.
 
 Every run receives a unique ID. Wins, losses, time-outs, restarts, quits, and browser closes are retained for analysis; interrupted runs are clearly marked and excluded from the completed-round win rate. Local development queues telemetry for the deployed Vercel balance endpoint and retries it later when the endpoint or Redis is temporarily unavailable.
 

@@ -1,6 +1,6 @@
-# Hinses Battlefield
+# Hinses Battlefield 2
 
-Hinses Battlefield is a free, non-commercial single-player browser arena game.
+Hinses Battlefield 2 is a free, non-commercial single-player browser arena game.
 
 ## What players do
 
@@ -22,4 +22,4 @@ Completed rounds offer a short Arena Code. Friends can enter this code on the st
 - Core features: combos, Overdrive, boss abilities, service ranks, arena codes
 - Modes: Easy, Normal, Hard, Very Hard
 - Creator: Patrick Hinsberger
-- Website: https://hinses-battlefield.vercel.app/
+- Website: https://hinses-battlefield-2.vercel.app/

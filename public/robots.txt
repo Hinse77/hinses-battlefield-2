@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hinses-battlefield.vercel.app/sitemap.xml
+Sitemap: https://hinses-battlefield-2.vercel.app/sitemap.xml

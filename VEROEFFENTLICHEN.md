@@ -1,4 +1,6 @@
-# Hinses Battlefield veröffentlichen
+# Hinses Battlefield 2 separat veröffentlichen
+
+Diese Version ist absichtlich ein eigenes Projekt. Das bestehende Repository und die bestehende Vercel-Seite von Version 1 werden nicht ersetzt.
 
 ## Einmalig: GitHub Desktop installieren
 
@@ -8,7 +10,7 @@ Installiere GitHub Desktop von https://desktop.github.com und melde dich mit dei
 
 1. Lade das ZIP-Paket herunter und entpacke es, zum Beispiel auf den Desktop.
 2. Öffne GitHub Desktop und wähle **File → Clone repository**.
-3. Wähle dein Repository `Hinse77 / hinses-battlefield` aus und klicke **Clone**.
+3. Erstelle beziehungsweise wähle ein neues Repository `Hinse77 / hinses-battlefield-2` und klicke **Clone**.
 4. Öffne den geklonten Ordner im Explorer.
 5. Kopiere den gesamten Inhalt des entpackten ZIP-Pakets in diesen geklonten Ordner. Wenn Windows nachfragt, wähle **Dateien ersetzen**.
 6. Öffne GitHub Desktop wieder. Dort siehst du die Änderungen automatisch.
@@ -21,7 +23,7 @@ Wichtig: Nicht einzelne Dateien im GitHub-Browser hochladen. Das ZIP enthält di
 
 1. Öffne https://vercel.com und melde dich mit GitHub an.
 2. Klicke **Add New → Project**.
-3. Wähle das Repository `hinses-battlefield` und klicke **Import**.
+3. Wähle das Repository `hinses-battlefield-2` und klicke **Import**.
 4. Vercel erkennt das Projekt automatisch. Falls eine Einstellung angezeigt wird: **Framework Vite**, **Build Command `npm run build`**, **Output Directory `dist`**.
 5. Klicke **Deploy**.
 6. Nach kurzer Zeit zeigt Vercel einen Link zu deinem Spiel. Diesen Link kannst du teilen.
@@ -30,7 +32,7 @@ Wichtig: Nicht einzelne Dateien im GitHub-Browser hochladen. Das ZIP enthält di
 
 1. Öffne in Vercel dein Projekt und wähle **Storage**.
 2. Klicke **Create Database** und wähle **Upstash Redis** aus dem Marketplace.
-3. Wähle den kostenlosen Startplan, verbinde ihn mit `hinses-battlefield` und bestätige die Einrichtung.
+3. Wähle den kostenlosen Startplan und verbinde ihn ausschließlich mit `hinses-battlefield-2`. Eine vorhandene Upstash-Datenbank kann technisch wiederverwendet werden, weil 2.0 eigene Schlüssel verwendet; ein eigener Store ist für maximale Trennung dennoch übersichtlicher.
 4. Starte in Vercel anschließend einen neuen Deploy über **Deployments → Redeploy**.
 
 Vercel fügt die benötigten Zugangsdaten automatisch ein. Danach teilen alle Spieler dieselbe Hall of Fame, getrennt nach Schwierigkeit. Die neue **Service-Rangliste** nutzt dieselbe Einrichtung: Rangpunkte werden pro Spielername über alle abgeschlossenen Runden gesammelt; der Fortschritt und die zehn Ränge erscheinen im Spiel. Im Bereich **Best Of** erscheint zusätzlich die anonyme Arena-Aktivität: eindeutige Spielsitzungen sowie gestartete und abgeschlossene Runden und die häufigsten Länder. Namen und IP-Adressen werden dafür nicht gespeichert.

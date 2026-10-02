@@ -3,7 +3,7 @@ import { Redis } from "@upstash/redis";
 const redisUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
 const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
 const redis = redisUrl && redisToken ? new Redis({ url: redisUrl, token: redisToken }) : null;
-const key = "hinses-battlefield:service-ranks:v1";
+const key = "hinses-battlefield-2:service-ranks:v1";
 const factors: Record<string, number> = { easy:.7, normal:1, hard:1.25, extreme:1.6 };
 const clean = (value: unknown, max: number) => Math.max(0, Math.min(max, Number(value) || 0));
 

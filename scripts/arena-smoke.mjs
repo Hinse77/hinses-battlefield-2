@@ -18,7 +18,11 @@ const expect = (condition, message) => { if (!condition) failures.push(message);
 // Fixed competitive rules and all central mechanics must remain present.
 expect(/targetMass:\s*40000/.test(config), "Target mass is not fixed to 40,000.");
 expect(/maxSurvivalSeconds:\s*600/.test(config), "Time limit is not fixed to 10 minutes.");
-expect(/localStorage\.getItem\("hinses-last-difficulty"\) \|\| "extreme"/.test(game) && /<option value="extreme" selected>/.test(html) && !/<option value="normal" selected>/.test(html), "Very Hard is not the default difficulty for new players.");
+expect(/localStorage\.getItem\("hb2-last-difficulty"\) \|\| "normal"/.test(game) && /<option value="normal" selected>/.test(html) && !/<option value="extreme" selected>/.test(html), "Battlefield 2 does not start with the intended Vanguard onboarding difficulty.");
+expect(/type Doctrine = "interceptor" \| "assimilator" \| "aegis"/.test(game) && /name="doctrine"/.test(html) && /updateDoctrineUi/.test(game), "Combat doctrine selection or HUD feedback is incomplete.");
+expect(/doctrineSpeed=this\.doctrine === "interceptor" \? 1\.12/.test(game) && /cooldown=this\.doctrine === "interceptor" \? 15000 : 18000/.test(game), "Interceptor movement or Overdrive recovery is incomplete.");
+expect(/this\.doctrine === "assimilator" \? 1\.45/.test(game) && /this\.doctrine === "assimilator" \? 1\.12/.test(game), "Assimilator growth modifiers are incomplete.");
+expect(/this\.doctrine === "aegis" \? \.65 : 1/.test(game) && /poisonLoss=small\.mass\*\(big === this\.player && this\.doctrine === "aegis" \? \.65 : 1\)/.test(game), "Aegis protection is incomplete.");
 expect(/poisonousGrazer\s*=\s*small instanceof Organism/.test(game), "Toxic Crazers do not poison every eater.");
 expect(/updatePoisonBolts/.test(game) && /drawPoisonBolts/.test(game), "Toxic Master poison arrows are incomplete.");
 expect(/Toxic Master/.test(game), "Toxic Master is missing from game logic.");
@@ -57,7 +61,7 @@ for (let run = 0; run < 100; run++) {
 }
 expect(/updateEndDuel\(dt\)/.test(game) && /playerRank <= 2/.test(game) && /larger\/smaller <= 1\.8/.test(game), "A genuine top-two end duel is not tracked.");
 expect(/endDuelBonus/.test(game) && /duelSeconds < 8/.test(game) && /extreme" \? 2500/.test(game) && /kind:"duel"/.test(game), "The capped End Duel score bonus is incomplete.");
-expect(/captureMassRecord/.test(game) && /hinses-personal-mass-record:/.test(game) && /NEW MASS RECORD/.test(game) && /mass-record-card/.test(css), "Personal mass records are not clearly recognized in the round summary.");
+expect(/captureMassRecord/.test(game) && /hb2-personal-mass-record:/.test(game) && /NEW MASS RECORD/.test(game) && /mass-record-card/.test(css), "Personal mass records are not clearly recognized in the round summary.");
 for (let run = 0; run < 100; run++) {
   const difficulty = ["easy","normal","hard","extreme"][run % 4], caps = { easy:800, normal:1200, hard:1800, extreme:2500 }, cap = caps[difficulty], seconds = 8 + run * .55, rivalMass = 30000 + run * 900, threatScale = Math.max(0,Math.min(1,(rivalMass/40000-.75)/1.75)), durationScale = Math.min(1,seconds/40), bonus = Math.min(cap,Math.round((350+cap*.65*threatScale+cap*.22*durationScale)/50)*50);
   expect(bonus >= 0 && bonus <= cap, `End Duel score smoke ${run + 1}: bonus exceeds its difficulty cap.`);
@@ -68,7 +72,7 @@ for (let run = 0; run < 100; run++) {
   expect(stage === (run >= 90 ? 3 : run >= 75 ? 2 : run >= 50 ? 1 : 0), `Escalation smoke ${run + 1}: wrong progress stage.`);
 }
 expect(/relevanceRadius/.test(game) && /selectionBand/.test(game) && /chaosAiDamage/.test(game), "Spatially relevant Chaotic explosions or their impact telemetry are incomplete.");
-expect(/hall:season-2/.test(read("api/leaderboard.ts")), "The fresh Hall of Fame season is not active.");
+expect(/hinses-battlefield-2:hall:season-1/.test(read("api/leaderboard.ts")), "The isolated Battlefield 2 Hall of Fame is not active.");
 expect(/configurable-rules" hidden/.test(html), "Advanced match-rule controls are visible.");
 expect(/hidden = !victory;/.test(game) && /hidden = winner !== this\.player;/.test(game), "Victory fireworks are not guaranteed for a player win, including a time-up win.");
 expect(/celebration-canvas/.test(css) && /firework-side \{ display:none !important/.test(css), "The legacy flat fireworks are not fully replaced by the canvas celebration.");
@@ -84,7 +88,7 @@ expect(/renderLocalAdminAnalytics/.test(game) && /contentType\.includes\("applic
 expect(/quit-round/.test(html) && /quitToMenu/.test(game) && /start-screen/.test(game), "Quit-to-menu navigation is incomplete.");
 expect(/saveInterruptedStats\("Quit to menu"\)/.test(game) && /saveInterruptedStats\("Restarted"\)/.test(game) && /pagehide/.test(game) && /saveInterruptedStats\("Browser closed"\)/.test(game), "Quit, restart, or page-close can still discard a run.");
 expect(/status:"abandoned"/.test(game) && /runId:this\.currentRunId/.test(game) && /withoutDuplicate/.test(game), "Interrupted-run identity or local deduplication is incomplete.");
-expect(/balanceEndpoint/.test(game) && /hinses-battlefield\.vercel\.app\/api\/balance/.test(game) && !/flushBalanceQueue\(\) \{ if \(this\.isLocalPreview\(\)\) return/.test(game), "Local preview cannot forward queued telemetry after deployment.");
+expect(/balanceEndpoint/.test(game) && /hinses-battlefield-2\.vercel\.app\/api\/balance/.test(game) && !/flushBalanceQueue\(\) \{ if \(this\.isLocalPreview\(\)\) return/.test(game), "Local preview cannot forward queued Battlefield 2 telemetry after deployment.");
 expect(/\.quick-actions button/.test(css) && /\.best-toggle/.test(css) && /\.quit-round/.test(css), "In-game action buttons are not visually unified.");
 expect(/Phone refinement/.test(css) && /@media \(max-width:430px\)/.test(css), "Dedicated narrow-phone layout is missing.");
 expect(/\.mobile-play \.hud \{ grid-template-columns:repeat\(2,max-content\)/.test(css) && /\.leaderboard li:nth-child\(n\+4\)/.test(css), "Narrow-phone HUD and leaderboard can still collide.");
@@ -95,13 +99,13 @@ expect(/updateToxicKamikaze/.test(game) && /elapsed < 120/.test(game) && /toxic\
 expect(/toxicAdvantage/.test(game) && /1\.18 : 1\.08/.test(game) && /1\.3 : 1\.15/.test(game) && /grazerFoodGrowth/.test(game), "Toxic Crazer growth role is incomplete.");
 expect(/personality:removed\.personality/.test(game) && /makeOrganism\(this\.respawnPersonality\(entry\.personality\)\)/.test(game), "Respawning does not preserve or rebalance regular opponent types.");
 expect(/updateBossCores/.test(game) && /bossName:removed\.name/.test(game) && /performance\.now\(\)\+20000/.test(game) && /killer !== this\.player/.test(game), "One-time AI-only Boss Core return is incomplete.");
-expect(/bossAiDefeats/.test(game) && /bossCoreReturns/.test(game) && /schemaVersion:5/.test(game), "Boss lifecycle telemetry is incomplete.");
+expect(/bossAiDefeats/.test(game) && /bossCoreReturns/.test(game) && /schemaVersion:6/.test(game), "Boss lifecycle telemetry is incomplete.");
 expect(/toxic-alert/.test(html) && /TOXIC KAMIKAZE/.test(html), "Toxic Kamikaze warning is missing.");
 expect(/arenaCode\(\)/.test(game) && /setArenaCode/.test(game) && /arenaRandom\(\)/.test(game), "Replay arena code generation is incomplete.");
 expect(/arena-code/.test(html) && /Copy arena code/.test(game), "Replay arena code UI is missing.");
 expect(/id="challenge-friend"/.test(html) && /Challenge a friend/.test(html) && /Share this result and arena/.test(html), "Challenge-a-friend result action is missing.");
 expect(/prepareChallenge\(points\.total\)/.test(game) && /I reached \$\{mass\} mass and earned \$\{score\} points/.test(game) && /Can you beat me in the same arena\?/.test(game) && /Arena Code: \$\{this\.arenaCode\(\)\}/.test(game), "Challenge message does not include the complete round result and arena code.");
-expect(/toLocaleString\("en-US"\)/.test(game) && /https:\/\/hinses-battlefield\.vercel\.app/.test(game), "Challenge numbers or production link are not share-ready.");
+expect(/toLocaleString\("en-US"\)/.test(game) && /https:\/\/hinses-battlefield-2\.vercel\.app/.test(game), "Challenge numbers or production link are not share-ready.");
 expect(/this\.mobileMode && typeof navigator\.share === "function"/.test(game) && /navigator\.clipboard\.writeText/.test(game) && /document\.execCommand\("copy"\)/.test(game), "Challenge sharing lacks mobile, clipboard, or legacy fallback support.");
 expect(/\.challenge-friend/.test(css) && /challenge-sheen/.test(css) && /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(css), "Challenge button is not integrated into the compact result design.");
 expect(/difficultyField\.addEventListener\("change"/.test(game) && /codeField\.value = ""/.test(game) && /difficultyField\.value = this\.difficulty/.test(game), "A stale arena code can still override a manually selected difficulty.");
@@ -112,12 +116,12 @@ expect(/Challenge a friend/.test(html) && /same starting food, opponents and bos
 expect(/At time up, the largest organism wins/.test(html) && /Overdrive lasts 5 seconds, then recharges for 18 seconds/.test(html), "Core field-guide rules are out of date.");
 expect(/Void Rift that empowers hunters and elites/.test(html) && /He is poisonous too/.test(html) && /Boss Core can restore it once after 20 seconds/.test(html), "Boss field-guide details are out of date.");
 expect(/\"@type\":\"VideoGame\"/.test(html) && /application-name/.test(html) && /canonical/.test(html), "Core game SEO metadata is incomplete.");
-expect(/Sitemap: https:\/\/hinses-battlefield\.vercel\.app\/sitemap\.xml/.test(robots) && /<lastmod>2026-09-28<\/lastmod>/.test(sitemap), "Robots or sitemap SEO discovery is incomplete.");
+expect(/Sitemap: https:\/\/hinses-battlefield-2\.vercel\.app\/sitemap\.xml/.test(robots) && /<lastmod>2026-10-02<\/lastmod>/.test(sitemap), "Robots or sitemap SEO discovery is incomplete.");
 expect(/Friendly arena challenges/.test(llms) && /Arena Code/.test(llms) && /\"categories\"/.test(manifest), "AI discovery or install metadata is incomplete.");
 expect(/capturePhaseSnapshots/.test(game) && /capturePhaseSnapshot\("end"\)/.test(game) && /phases:this\.phaseSnapshots/.test(game), "Opponent phase snapshots are incomplete.");
 expect(/deathCause/.test(game) && /big instanceof Organism \? big\.name/.test(game), "Player death-cause tracking is incomplete.");
 expect(/deathCauses/.test(read("api/balance.ts")) && /phaseSnapshots/.test(read("api/balance.ts")) && /source\.maxMass/.test(read("api/balance.ts")) && /source\.averageMass/.test(read("api/balance.ts")), "Shared balance telemetry misses new round signals.");
-expect(/bossAiDefeats/.test(read("api/balance.ts")) && /bossCoreReturns/.test(read("api/balance.ts")) && /schemaVersion:5/.test(read("api/balance.ts")), "Shared Boss Core telemetry is incomplete.");
+expect(/bossAiDefeats/.test(read("api/balance.ts")) && /bossCoreReturns/.test(read("api/balance.ts")) && /schemaVersion:6/.test(read("api/balance.ts")) && /doctrine/.test(read("api/balance.ts")), "Shared Boss Core and doctrine telemetry is incomplete.");
 expect(/duelRounds/.test(read("api/balance.ts")) && /duelSeconds/.test(read("api/balance.ts")) && /duelRivalPeak/.test(read("api/balance.ts")) && /duelRivalName/.test(read("api/balance.ts")) && /duelBonus/.test(read("api/balance.ts")), "Central end-duel telemetry is incomplete.");
 expect(/pulse-duel-summary/.test(game) && /pulse-round-duel/.test(game), "Arena Pulse does not visualize shared end-duel telemetry.");
 expect(/Access-Control-Allow-Origin/.test(read("api/balance.ts")) && /req\.method === "OPTIONS"/.test(read("api/balance.ts")), "Local-to-deployed telemetry CORS support is incomplete.");
@@ -130,14 +134,17 @@ expect(/req\.method === "GET"/.test(read("api/balance.ts")) && /recentRounds/.te
 expect(/admin-recent/.test(html) && /recentRounds/.test(game) && /pulse-round-metrics/.test(game) && /pulse-types/.test(game), "Recent shared balance rounds are missing from Arena Pulse.");
 expect(/pulse-kpis/.test(html) && /pulse-balance/.test(html) && /pulse-ring/.test(css) && /pulse-round\.win/.test(css), "Arena Pulse graphical dashboard is incomplete.");
 expect(/start-deep-stats/.test(html) && /balance-analysis-feed/.test(html) && /syncAnalysisFeed/.test(game), "Persistent local Deep Statistics access is incomplete.");
-expect(/schemaVersion:5/.test(game) && /toxicBoltsHitPlayer/.test(game) && /abilities:/.test(game) && /respawns:/.test(game) && /finalTop10/.test(game), "Round telemetry schema is not sufficiently detailed.");
+expect(/schemaVersion:6/.test(game) && /doctrine:this\.doctrine/.test(game) && /toxicBoltsHitPlayer/.test(game) && /abilities:/.test(game) && /respawns:/.test(game) && /finalTop10/.test(game), "Round telemetry schema is not sufficiently detailed.");
 expect(/enhanceDeepStatsVisuals/.test(game) && /deep-readable-summary/.test(game) && /deep-timeline/.test(game) && /deep-ranking/.test(game) && /deep-data-guide/.test(game), "Deep Statistics lacks its human-readable visual debrief.");
 expect(/entry instanceof Organism \? entry\.name : this\.playerName/.test(game) && /entry\.type === "player" \? this\.playerName/.test(game), "Deep Statistics does not preserve the player identity separately from the analytics type.");
 expect(/\.deep-bars/.test(css) && /\.deep-phase-row/.test(css) && /\.deep-ranking/.test(css), "Visual Deep Statistics styling is incomplete.");
 expect(/decorateRoundStatus/.test(game) && /round\.status !== "abandoned"/.test(game) && /provisional points · not ranked/.test(game) && /excluded from completed-round win rate/.test(game) && /round-status-note/.test(css), "Deep Statistics does not correctly distinguish interrupted runs.");
 expect(/difficulty === "all"/.test(read("api/balance.ts")) && /slice\(0, 100\)/.test(read("api/balance.ts")), "Central balance history is not broadly retrievable or persistent enough.");
 expect(/capturePhaseSnapshot\("1:00"\)/.test(game) && /capturePhaseSnapshot\("3:00"\)/.test(game) && /player:\{ count:1/.test(game), "Player and mid-round phase snapshots are incomplete.");
-expect(/captureLiveTelemetry/.test(game) && /hinses-live-stats/.test(game) && /status:"active"/.test(game), "Live and interrupted-round telemetry is incomplete.");
+expect(/captureLiveTelemetry/.test(game) && /hb2-live-stats/.test(game) && /status:"active"/.test(game), "Live and interrupted-round telemetry is incomplete.");
+expect(/drawArenaAtmosphere/.test(game) && /drawOrganismCore/.test(game) && /Battlefield 2 command deck/.test(css), "Battlefield 2 visual identity is incomplete.");
+expect(!/localStorage\.(getItem|setItem|removeItem)\("hinses-/.test(game) && !/localStorage\.(getItem|setItem|removeItem)\("mass-arena-/.test(game), "Battlefield 2 still writes into a Version 1 browser namespace.");
+expect(["admin-analytics.ts","analytics.ts","balance.ts","guestbook.ts","leaderboard.ts","ranks.ts"].every(file => /hinses-battlefield-2:/.test(read(`api/${file}`))), "A server function still uses the Version 1 database namespace.");
 
 // One hundred randomized arena layouts: player-safe starts, world boundaries, and boss separation.
 const world = 6000;
@@ -169,13 +176,13 @@ for (let run = 0; run < 100; run++) {
   const mass = 200 + Math.floor(Math.random() * 250000);
   const points = Math.floor(Math.random() * 500000);
   const difficulty = difficulties[run % difficulties.length];
-  const code = `HB-${codeTags[difficulty]}-${(100000 + run).toString(36).toUpperCase()}`;
-  const message = `I reached ${mass.toLocaleString("en-US")} mass and earned ${points.toLocaleString("en-US")} points in Hinses Battlefield.\nCan you beat me in the same arena?\nArena Code: ${code}\nhttps://hinses-battlefield.vercel.app`;
+  const code = `HB2-${codeTags[difficulty]}-${(100000 + run).toString(36).toUpperCase()}`;
+  const message = `I reached ${mass.toLocaleString("en-US")} mass and earned ${points.toLocaleString("en-US")} points in Hinses Battlefield 2.\nCan you beat me in the same arena?\nArena Code: ${code}\nhttps://hinses-battlefield-2.vercel.app`;
   const lines = message.split("\n");
   expect(lines.length === 4, `Challenge smoke ${run + 1}: message does not have four readable lines.`);
   expect(lines[0].includes(mass.toLocaleString("en-US")) && lines[0].includes(points.toLocaleString("en-US")), `Challenge smoke ${run + 1}: result values are missing or unformatted.`);
   expect(lines[2] === `Arena Code: ${code}`, `Challenge smoke ${run + 1}: arena code changed during formatting.`);
-  expect(lines[3] === "https://hinses-battlefield.vercel.app", `Challenge smoke ${run + 1}: public link is incorrect.`);
+  expect(lines[3] === "https://hinses-battlefield-2.vercel.app", `Challenge smoke ${run + 1}: public link is incorrect.`);
 }
 
 // One hundred endgame mobility checks: increasing Elite mass must never make
@@ -198,14 +205,14 @@ for (let run = 0; run < 100; run++) {
 for (let run = 0; run < 100; run++) {
   const selected = difficulties[Math.floor(Math.random() * difficulties.length)];
   const staleCodeDifficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
-  let arenaCode = `HB-${codeTags[staleCodeDifficulty]}-SMOKE${run}`;
+  let arenaCode = `HB2-${codeTags[staleCodeDifficulty]}-SMOKE${run}`;
   // The user manually changes the selector: production clears the stale code.
   arenaCode = "";
   const startedDifficulty = arenaCode ? staleCodeDifficulty : selected;
   expect(startedDifficulty === selected, `Difficulty smoke ${run + 1}: stale arena code overrode ${selected}.`);
 
   // A deliberately entered replay code selects its encoded level for one start only.
-  let replayCode = `HB-${codeTags[staleCodeDifficulty]}-REPLAY${run}`;
+  let replayCode = `HB2-${codeTags[staleCodeDifficulty]}-REPLAY${run}`;
   const replayDifficulty = staleCodeDifficulty;
   replayCode = "";
   expect(replayDifficulty === staleCodeDifficulty && replayCode === "", `Difficulty smoke ${run + 1}: replay code was not one-shot.`);

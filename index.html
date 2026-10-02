@@ -4,34 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1" />
     <meta name="theme-color" content="#071122" />
-    <meta name="application-name" content="Hinses Battlefield" />
-    <meta name="apple-mobile-web-app-title" content="Hinses Battlefield" />
-    <meta name="description" content="Play Hinses Battlefield, a free browser arena strategy game. Grow your orb, outsmart hunters and bosses, master combos and Overdrive, and reach 40,000 mass in ten minutes." />
+    <meta name="application-name" content="Hinses Battlefield 2" />
+    <meta name="apple-mobile-web-app-title" content="Hinses Battlefield 2" />
+    <meta name="description" content="Hinses Battlefield 2 is a cinematic tactical arena game. Choose a combat doctrine, evolve your orb, outsmart rival organisms and conquer a living battlefield." />
     <meta name="keywords" content="Hinses Battlefield, free browser game, arena game, orb game, strategy arcade game, single player web game, HTML5 game, boss arena" />
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="author" content="Patrick Hinsberger" />
-    <link rel="canonical" href="https://hinses-battlefield.vercel.app/" />
+    <link rel="canonical" href="https://hinses-battlefield-2.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Hinses Battlefield" />
-    <meta property="og:title" content="Hinses Battlefield — Grow. Outsmart. Conquer." />
-    <meta property="og:description" content="A free browser arena strategy game of growth, hunters, bosses, combos, Overdrive and a ten-minute race to 40,000 mass." />
-    <meta property="og:url" content="https://hinses-battlefield.vercel.app/" />
-    <meta property="og:image" content="https://hinses-battlefield.vercel.app/hinses-battlefield-logo.svg" />
+    <meta property="og:site_name" content="Hinses Battlefield 2" />
+    <meta property="og:title" content="Hinses Battlefield 2 — Adapt. Hunt. Conquer." />
+    <meta property="og:description" content="Choose a combat doctrine and fight through a living cinematic arena where every rival follows its own strategy." />
+    <meta property="og:url" content="https://hinses-battlefield-2.vercel.app/" />
+    <meta property="og:image" content="https://hinses-battlefield-2.vercel.app/hinses-battlefield-logo.svg" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Hinses Battlefield — Free Browser Arena Game" />
+    <meta name="twitter:title" content="Hinses Battlefield 2 — Tactical Arena Game" />
     <meta name="twitter:description" content="Grow, outsmart hunters, defeat bosses, master Overdrive and conquer the arena in ten minutes." />
-    <meta name="twitter:image" content="https://hinses-battlefield.vercel.app/hinses-battlefield-logo.svg" />
+    <meta name="twitter:image" content="https://hinses-battlefield-2.vercel.app/hinses-battlefield-logo.svg" />
     <link rel="icon" type="image/svg+xml" href="./hinses-battlefield-logo.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./hinses-battlefield-logo.svg" />
-    <title>Hinses Battlefield</title>
+    <title>Hinses Battlefield 2 — Alpha Command</title>
     <script type="application/ld+json">
       {
         "@context":"https://schema.org",
         "@graph":[
-          {"@type":"WebSite","name":"Hinses Battlefield","url":"https://hinses-battlefield.vercel.app/","inLanguage":"en"},
-          {"@type":"VideoGame","name":"Hinses Battlefield","applicationCategory":"GameApplication","operatingSystem":"Web Browser","gamePlatform":"Web browser","playMode":"SinglePlayer","isAccessibleForFree":true,"url":"https://hinses-battlefield.vercel.app/","image":"https://hinses-battlefield.vercel.app/hinses-battlefield-logo.svg","description":"A free single-player browser arena strategy game where players grow an orb, evade hunters, use Overdrive, defeat bosses, master combos, and reach 40,000 mass in ten minutes.","author":{"@type":"Person","name":"Patrick Hinsberger"},"genre":["Arcade","Arena","Strategy","Browser Game"],"inLanguage":"en"}
+          {"@type":"WebSite","name":"Hinses Battlefield 2","url":"https://hinses-battlefield-2.vercel.app/","inLanguage":"en"},
+          {"@type":"VideoGame","name":"Hinses Battlefield 2","applicationCategory":"GameApplication","operatingSystem":"Web Browser","gamePlatform":"Web browser","playMode":"SinglePlayer","isAccessibleForFree":true,"url":"https://hinses-battlefield-2.vercel.app/","image":"https://hinses-battlefield-2.vercel.app/hinses-battlefield-logo.svg","description":"A free single-player browser arena strategy game where players grow an orb, evade hunters, use Overdrive, defeat bosses, master combos, and reach 40,000 mass in ten minutes.","author":{"@type":"Person","name":"Patrick Hinsberger"},"genre":["Arcade","Arena","Strategy","Browser Game"],"inLanguage":"en"}
         ]
       }
     </script>
@@ -39,8 +39,17 @@
   <body>
     <main class="game-shell">
       <canvas id="game" aria-label="Hinses Battlefield game area"></canvas>
-      <section class="start-screen" id="start-screen">
-        <div class="start-card"><img class="game-logo" id="game-logo" src="./hinses-battlefield-logo.svg" alt="Hinses Battlefield logo" /><p class="eyebrow">HINSES BATTLEFIELD</p><h1>Grow. Outsmart. Conquer.</h1><p>Reach 40,000 mass in 10 minutes. Grow early, outplay the arena, and own the endgame.</p><div class="controls-preview"><span>Choose mouse, keyboard, or touch after starting. Full rules and opponent intel are in the field guide.</span></div><div class="start-actions"><button id="open-help" class="help-button" type="button">◌ Field guide</button><button id="open-guestbook" class="guestbook-button" type="button">✦ Guestbook</button></div><div class="name-field"><span>Your arena identity</span><label for="start-player-name">Arena name</label><input id="start-player-name" type="text" maxlength="14" required autocomplete="nickname" placeholder="Choose your legend name" /><small>Saved automatically for your next round.</small></div><label>Arena code <input id="arena-code" type="text" maxlength="18" autocapitalize="characters" placeholder="Optional: HB-V-ABC123" /><small>Use a shared code to enter the same starting arena.</small></label><label>Difficulty<select id="difficulty"><option value="easy">Easy · more prey</option><option value="normal">Normal · balanced</option><option value="hard">Hard · more hunters</option><option value="extreme" selected>Very hard · hunter arena · intelligent KI</option></select></label><button id="start-game">Enter arena →</button><button id="start-deep-stats" class="start-intelligence" type="button">Last run intelligence ↗</button><small class="start-ready">Ready to make your next run count?</small></div>
+      <section class="start-screen v2-start" id="start-screen">
+        <div class="start-card v2-command-card">
+          <header class="v2-identity"><img class="game-logo" id="game-logo" src="./hinses-battlefield-logo.svg" alt="Hinses Battlefield logo" /><div><p class="eyebrow">HINSES BATTLEFIELD</p><span>ALPHA COMMAND · 2.0</span></div></header>
+          <h1>Adapt. Hunt.<br />Conquer.</h1>
+          <p class="v2-hook">Enter a living arena. Choose your doctrine, read your rivals, and turn every risky move into momentum.</p>
+          <div class="start-actions"><button id="open-help" class="help-button" type="button">◌ Field guide</button><button id="open-guestbook" class="guestbook-button" type="button">✦ Guestbook</button></div>
+          <div class="v2-form-grid"><div class="name-field"><span>Your arena identity</span><label for="start-player-name">Callsign</label><input id="start-player-name" type="text" maxlength="14" required autocomplete="nickname" placeholder="Choose your callsign" /><small>Saved for your next deployment.</small></div><label>Arena code <input id="arena-code" type="text" maxlength="18" autocapitalize="characters" placeholder="Optional: HB2-N-ABC123" /><small>Replay the same battlefield.</small></label></div>
+          <fieldset class="doctrine-picker"><legend>Choose combat doctrine</legend><label><input type="radio" name="doctrine" value="interceptor" /><span><i>↯</i><b>Interceptor</b><small>Faster movement and Overdrive recovery</small></span></label><label><input type="radio" name="doctrine" value="assimilator" checked /><span><i>◉</i><b>Assimilator</b><small>Stronger particle and absorption growth</small></span></label><label><input type="radio" name="doctrine" value="aegis" /><span><i>⬡</i><b>Aegis</b><small>Reduced venom and shockwave damage</small></span></label></fieldset>
+          <label>Threat level<select id="difficulty"><option value="easy">Cadet · more prey</option><option value="normal" selected>Vanguard · balanced</option><option value="hard">Veteran · tactical hunters</option><option value="extreme">Apex · intelligent hunter arena</option></select></label>
+          <button id="start-game">Deploy to arena →</button><div class="v2-start-footer"><span>Mouse · keyboard · touch</span><button id="start-deep-stats" class="start-intelligence" type="button">Combat intelligence ↗</button></div>
+        </div>
       </section>
       <section class="guestbook-overlay" id="guestbook-overlay" aria-labelledby="guestbook-title" hidden><article class="guestbook-card" role="dialog" aria-modal="true"><header><img src="./hinses-battlefield-logo.svg" alt="" /><div><p class="eyebrow">COMMUNITY LOG</p><h2 id="guestbook-title">Guestbook</h2></div><button id="close-guestbook" class="help-close" type="button" aria-label="Close guestbook">×</button></header><p class="guestbook-intro">Leave us your arena experience. Got an improvement idea? Write it here.</p><form id="guestbook-form"><label>Name<input id="guestbook-name" maxlength="18" required /></label><label>Message<textarea id="guestbook-message" maxlength="280" required placeholder="Your message to the arena..."></textarea></label><label class="bot-trap" aria-hidden="true">Website<input id="guestbook-website" tabindex="-1" autocomplete="off" /></label><button type="submit">Post entry →</button><small id="guestbook-status" aria-live="polite"></small></form><ol class="guestbook-entries" id="guestbook-entries"></ol></article></section>
       <section class="admin-overlay" id="admin-overlay" aria-labelledby="admin-title" hidden><article class="admin-card pulse-card" role="dialog" aria-modal="true"><header class="pulse-header"><img src="./hinses-battlefield-logo.svg" alt="" /><div><p class="eyebrow">ARENA PULSE</p><h2 id="admin-title">Community overview</h2></div></header><p class="analytics-intro">A shared, anonymous view of arena activity. No names or IP addresses are stored.</p><small id="admin-status" class="pulse-status" aria-live="polite"></small><div id="admin-results" class="pulse-results" hidden><div id="admin-totals" class="pulse-kpis"></div><div class="pulse-dashboard"><section class="pulse-panel"><h3><span>◈</span> Difficulty activity</h3><div id="admin-difficulties" class="pulse-bars"></div></section><section class="pulse-panel"><h3><span>◎</span> Countries</h3><div id="admin-countries" class="pulse-countries"></div></section></div><section class="pulse-panel"><h3><span>⌁</span> Balance signals</h3><div id="admin-balance" class="pulse-balance"></div></section><section class="pulse-panel"><h3><span>✦</span> Recent arena runs</h3><div id="admin-recent" class="pulse-rounds"></div></section></div><button id="close-admin" class="admin-close pulse-close" type="button">Close overview</button></article></section>
@@ -49,10 +58,10 @@
           <header><img src="./hinses-battlefield-logo.svg" alt="" /><div><p class="eyebrow">ARENA FIELD GUIDE</p><h2 id="help-title">Know the battlefield.</h2></div><button id="close-help" class="help-close" type="button" aria-label="Close help">×</button></header>
           <div class="help-grid">
             <section><h3>Your objective</h3><p>Reach 40,000 mass before the ten-minute timer expires. On Very Hard you must also take arena rank #1: reaching the target starts the final Conquest Phase. At time up, the largest organism wins. You can absorb organisms that are at least 15% smaller and mostly inside your orb.</p><p><b>Rank points:</b> target progress, fast finishes, combos, wins, boss defeats and genuine top-two end duels. Toxic poison reduces both mass and rank points.</p></section>
-            <section><h3>Move & survive</h3><p><b>Mouse:</b> move toward cursor; triple-click one direction for Overdrive. <b>Keyboard:</b> WASD / arrows; Q activates Overdrive. <b>Mobile:</b> virtual stick and OVERDRIVE button.</p><p>Space pauses. Overdrive lasts 5 seconds, then recharges for 18 seconds. The Arena Radar shows you, the ten strongest rivals and every active boss. Avoid larger orbs and use food routes to grow safely.</p></section>
+            <section><h3>Move & survive</h3><p><b>Mouse:</b> move toward cursor; triple-click one direction for Overdrive. <b>Keyboard:</b> WASD / arrows; Q activates Overdrive. <b>Mobile:</b> virtual stick and OVERDRIVE button.</p><p>Space pauses. Overdrive lasts 5 seconds, then recharges for 18 seconds — or 15 seconds as Interceptor. The Arena Radar shows you, the ten strongest rivals and every active boss. Avoid larger orbs and use food routes to grow safely.</p></section>
             <section><h3>Organism types</h3><ul class="guide-types"><li><i class="grazer"></i><b>Toxic Crazer</b> — poison core; absorbing it costs the eater mass. On Hard and Very Hard it converts particles into extra growth.</li><li><i class="coward"></i><b>Coward</b> — survival scavenger; reads multiple threats, chooses safer food routes and escapes with Panic Dash.</li><li><i class="hunter"></i><b>Hunter</b> — aggressive Bloodrush pursuer.</li><li><i class="opportunist"></i><b>Opportunist</b> — larger starter, quick ambushes.</li><li><i class="chaotic"></i><b>Chaotic</b> — wild movement; its burning fuse warns of a damaging shockwave. Keep clear.</li><li><i class="elite"></i><b>Elite</b> — smart Vector Burst; during Elite Recovery it abandons hopeless attacks, avoids guarded prey and hunts valuable mid-sized targets. Its comeback growth fades once it reaches the arena lead.</li></ul></section>
             <section><h3>Boss protocol</h3><p>Bosses have an orbit ring; it brightens while an ability is active. <b>Titan Vex</b> charges, <b>Ember Nyx</b> bursts, and <b>Void Orion</b> opens a Void Rift that empowers hunters and elites.</p><p><b>Toxic Master</b> fires green Adaptive Venom arrows. They are gentler against small targets, scale up against massive targets, and siphon part of the damage back to him. He is poisonous too: absorbing him costs mass. If the arena AI defeats a boss, its Boss Core can restore it once after 20 seconds; a boss defeated by you stays down. Hard has Titan Vex and Toxic Master; very hard has all four bosses.</p></section>
-            <section><h3>Difficulty</h3><p><b>Easy:</b> more prey and a larger start. <b>Normal:</b> balanced arena. <b>Hard:</b> more hunters and two bosses. <b>Very hard:</b> smarter opponents, all four bosses and a Toxic Crazer charge.</p><p>On Hard and Very Hard, your progress drives the response: at <b>50%</b> mass the arena watches you, at <b>75%</b> Elites enter tactical recovery, and at <b>90%</b> the full arena alarm begins. Time pressure also advances these stages if a round runs long.</p></section>
+            <section><h3>Combat doctrines</h3><p><b>Interceptor:</b> 12% faster movement and a shorter Overdrive cooldown. <b>Assimilator:</b> 45% more particle growth and 12% more safe absorption growth. <b>Aegis:</b> 35% less venom, toxic-core and shockwave damage.</p><p>Your doctrine is saved, shown in the HUD, and included in Battlefield 2 balance telemetry.</p></section><section><h3>Difficulty</h3><p><b>Easy:</b> more prey and a larger start. <b>Normal:</b> balanced arena. <b>Hard:</b> more hunters and two bosses. <b>Very hard:</b> smarter opponents, all four bosses and a Toxic Crazer charge.</p><p>On Hard and Very Hard, your progress drives the response: at <b>50%</b> mass the arena watches you, at <b>75%</b> Elites enter tactical recovery, and at <b>90%</b> the full arena alarm begins. Time pressure also advances these stages if a round runs long.</p></section>
             <section><h3>Challenge a friend</h3><p>Finish a round and choose <b>Challenge a friend</b>. On mobile, the share menu opens; on desktop, your result, points, arena code and game link are copied together. <b>Copy arena code</b> remains available for the short version.</p><p>Entering the code on the start screen selects the difficulty and creates the same starting food, opponents and bosses. The arena is shared, not scripted: movement, abilities and the final score still depend on each player.</p></section>
             <section><h3>Service ranks</h3><p>Earn permanent service points across every completed round. Difficulty adjusts the reward: Easy 70%, Normal 100%, Hard 125%, Very Hard 160%. Your military badge is displayed directly on your orb; the global service board recognizes players by arena name.</p><ol class="rank-guide" id="rank-guide"></ol></section>
           </div>
@@ -60,7 +69,7 @@
         </article>
       </section>
       <section class="hud" aria-live="polite">
-        <div class="brand"><img src="./hinses-battlefield-logo.svg" alt="" /> HINSES BATTLEFIELD</div>
+        <div class="brand"><img src="./hinses-battlefield-logo.svg" alt="" /> HINSES BATTLEFIELD <em>2.0</em></div>
         <div class="stat"><span>Mass</span><strong id="mass">200</strong></div>
         <div class="stat optional-stat"><span>Size</span><strong id="size">24</strong></div>
         <div class="stat"><span>Rank</span><strong id="rank">—</strong></div>
@@ -68,7 +77,7 @@
         <div class="stat optional-stat"><span>Absorbed</span><strong id="absorbed">0</strong></div>
         <div class="stat combo-stat"><span>Combo</span><strong id="combo">—</strong></div>
         <div class="stat"><span>Goal</span><strong id="goal">200 / 40,000</strong></div>
-        <button class="power" id="power" aria-label="Activate Overdrive">OVERDRIVE <span id="power-status">READY</span></button>
+        <div class="doctrine-status" id="doctrine-status"><i>◉</i><span>ASSIMILATOR</span></div><button class="power" id="power" aria-label="Activate Overdrive">OVERDRIVE <span id="power-status">READY</span></button>
         <p class="hint" id="controls-hint">Mouse control active · Triple-click to boost</p><p class="arena-phase" id="arena-phase" hidden></p>
       </section>
       <aside class="leaderboard"><h2>TOP MASS</h2><ol id="leaderboard"></ol><section class="arena-radar" aria-label="Arena radar"><header><b>ARENA RADAR</b><small>TOP 10 + BOSSES</small></header><canvas id="minimap" aria-label="Approximate positions of the player, ten strongest opponents, and bosses"></canvas><p><span class="radar-you">●</span> You <span class="radar-rival">1–10</span> Rivals <span class="radar-boss">◆</span> Boss</p></section></aside>
