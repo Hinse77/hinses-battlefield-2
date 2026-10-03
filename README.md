@@ -12,13 +12,13 @@ An isolated next-generation branch of the TypeScript/Vite/Canvas arena game. Ver
 - Separate browser storage, replay codes (`HB2-*`), Redis namespaces, Hall of Fame and balance telemetry.
 - Vanguard/Normal onboarding by default; Veteran and Apex remain advanced challenges.
 
-Release candidate `2.0.0-rc.2` is playable on desktop and mobile, production-build clean, and isolated from Battlefield 1. Run `npm run test:release` for the complete automated publication gate.
+Release candidate `2.0.0-rc.3` is playable on desktop and mobile, production-build clean, and isolated from Battlefield 1. Run `npm run test:release` for the complete automated publication gate.
 
 ## Live release
 
 - Play: https://hinses-battlefield-2.vercel.app
 - Source: https://github.com/Hinse77/hinses-battlefield-2
-- Status: RC2 is live as a completely separate project; Battlefield 1 remains untouched.
+- Status: RC3 adds a premium mission debrief and player-readable Deep Statistics while remaining a completely separate project; Battlefield 1 remains untouched.
 - Shared services: the game currently uses its safe browser fallback until an Upstash database is connected to the Vercel project.
 
 ## Publish with Vercel

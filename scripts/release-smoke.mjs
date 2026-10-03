@@ -9,6 +9,8 @@ const expect = (condition, message) => { if (!condition) failures.push(message);
 const html = read("index.html");
 const game = read("src/game/Game.ts");
 const css = read("src/style.css");
+const debrief = read("src/ui/PremiumDebrief.ts");
+const main = read("src/main.ts");
 const pkg = JSON.parse(read("package.json"));
 const vercel = JSON.parse(read("vercel.json"));
 const distHtml = read("dist/index.html");
@@ -16,14 +18,14 @@ const apiFiles = fs.readdirSync(path.join(root, "api")).filter((file) => file.en
 const assetFiles = fs.readdirSync(path.join(root, "dist", "assets"));
 
 expect(pkg.name === "hinses-battlefield-2", "Release package has the wrong project identity.");
-expect(pkg.version === "2.0.0-rc.2", "Release package version is not RC2.");
+expect(pkg.version === "2.0.0-rc.3", "Release package version is not RC3.");
 expect(pkg.scripts?.test === "node scripts/arena-smoke.mjs", "Core arena smoke command changed unexpectedly.");
 expect(vercel.framework === "vite" && vercel.buildCommand === "npm run build" && vercel.outputDirectory === "dist", "Vercel production settings are incomplete.");
 expect(assetFiles.some((file) => file.endsWith(".js")) && assetFiles.some((file) => file.endsWith(".css")), "Production assets were not emitted.");
 expect(!distHtml.includes("./src/main.ts"), "Production HTML still points at TypeScript source.");
 expect(/assets\/index-[^"']+\.js/.test(distHtml) && /assets\/index-[^"']+\.css/.test(distHtml), "Hashed production assets are not linked.");
 
-for (const id of ["start-screen","start-game","game","mission-status","mission-progress","power","leaderboard","minimap","game-over","deep-stats-overlay","imprint-overlay"]) {
+for (const id of ["start-screen","start-game","game","mission-status","mission-progress","power","leaderboard","minimap","game-over","debrief-grade","deep-stats-overlay","imprint-overlay"]) {
   expect(html.includes(`id="${id}"`), `Required release UI element #${id} is missing.`);
 }
 expect(/hinses-battlefield-2\.vercel\.app/.test(html), "Canonical Battlefield 2 production URL is missing.");
@@ -33,6 +35,10 @@ expect(/drawDoctrineAura/.test(game) && /drawThreatIndicator/.test(game) && /dra
 expect(/\.mission-status/.test(css) && /\.mission-alert/.test(css), "Mission guidance styling is missing.");
 expect(/@media \(max-width:540px\)/.test(css) && /@media \(max-width:430px\)/.test(css), "Mobile release breakpoints are incomplete.");
 expect(/min-height:44px/.test(css), "Mobile primary touch targets are smaller than the release baseline.");
+expect(/class PremiumDebrief/.test(debrief) && /MISSION ASSESSMENT/.test(debrief), "Premium mission debrief is missing.");
+expect(/Command analysis/.test(debrief) && /Arena progression/.test(debrief) && /Final arena top 10/.test(debrief), "Player-readable Deep Statistics are incomplete.");
+expect(/escapeHtml/.test(debrief), "Statistics presentation does not sanitize player-facing values.");
+expect(/\["localhost","127\.0\.0\.1"\]/.test(main) && /debrief-preview/.test(main), "Local-only visual debrief fixture is missing or not host-restricted.");
 
 for (const file of apiFiles) {
   const source = read(`api/${file}`);
