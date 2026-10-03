@@ -1,4 +1,4 @@
-# Hinses Battlefield 2 — Alpha Command
+# Hinses Battlefield 2 — Tactical Command
 
 An isolated next-generation branch of the TypeScript/Vite/Canvas arena game. Version 1 is intentionally untouched and can continue independently.
 
@@ -6,9 +6,13 @@ An isolated next-generation branch of the TypeScript/Vite/Canvas arena game. Ver
 
 - Three combat doctrines: **Interceptor**, **Assimilator**, and **Aegis**.
 - A cinematic command-deck start screen and living arena atmosphere.
+- A four-stage tactical mission director, sector-marked battlefield and fair nearby-threat telegraph.
+- Doctrine-specific arena signatures for Interceptor, Assimilator and Aegis.
 - Distinct inner silhouettes for every organism family.
 - Separate browser storage, replay codes (`HB2-*`), Redis namespaces, Hall of Fame and balance telemetry.
 - Vanguard/Normal onboarding by default; Veteran and Apex remain advanced challenges.
+
+Release candidate `2.0.0-rc.1` is playable on desktop and mobile, production-build clean, and isolated from Battlefield 1.
 
 ## Publish with Vercel
 
