@@ -25,7 +25,7 @@
     <link rel="icon" type="image/svg+xml" href="./hinses-battlefield-logo.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./hinses-battlefield-logo.svg" />
-    <title>Hinses Battlefield 2 — Alpha Command</title>
+    <title>Hinses Battlefield 2 — Tactical Orb Arena</title>
     <script type="application/ld+json">
       {
         "@context":"https://schema.org",
@@ -41,7 +41,7 @@
       <canvas id="game" aria-label="Hinses Battlefield game area"></canvas>
       <section class="start-screen v2-start" id="start-screen">
         <div class="start-card v2-command-card">
-          <header class="v2-identity"><img class="game-logo" id="game-logo" src="./hinses-battlefield-logo.svg" alt="Hinses Battlefield logo" /><div><p class="eyebrow">HINSES BATTLEFIELD</p><span>ALPHA COMMAND · 2.0</span></div></header>
+          <header class="v2-identity"><img class="game-logo" id="game-logo" src="./hinses-battlefield-logo.svg" alt="Hinses Battlefield logo" /><div><p class="eyebrow">HINSES BATTLEFIELD</p><span>TACTICAL COMMAND · 2.0</span></div></header>
           <h1>Adapt. Hunt.<br />Conquer.</h1>
           <p class="v2-hook">Enter a living arena. Choose your doctrine, read your rivals, and turn every risky move into momentum.</p>
           <div class="start-actions"><button id="open-help" class="help-button" type="button">◌ Field guide</button><button id="open-guestbook" class="guestbook-button" type="button">✦ Guestbook</button></div>
@@ -77,7 +77,12 @@
         <div class="stat optional-stat"><span>Absorbed</span><strong id="absorbed">0</strong></div>
         <div class="stat combo-stat"><span>Combo</span><strong id="combo">—</strong></div>
         <div class="stat"><span>Goal</span><strong id="goal">200 / 40,000</strong></div>
-        <div class="doctrine-status" id="doctrine-status"><i>◉</i><span>ASSIMILATOR</span></div><button class="power" id="power" aria-label="Activate Overdrive">OVERDRIVE <span id="power-status">READY</span></button>
+        <div class="doctrine-status" id="doctrine-status"><i>◉</i><span>ASSIMILATOR</span></div>
+        <section class="mission-status" id="mission-status" aria-label="Current mission">
+          <header><small id="mission-phase">MISSION 01</small><b id="mission-title">Harvest the field</b></header>
+          <span id="mission-copy">Reach 6,000 mass</span><i><em id="mission-progress"></em></i>
+        </section>
+        <button class="power" id="power" aria-label="Activate Overdrive">OVERDRIVE <span id="power-status">READY</span></button>
         <p class="hint" id="controls-hint">Mouse control active · Triple-click to boost</p><p class="arena-phase" id="arena-phase" hidden></p>
       </section>
       <aside class="leaderboard"><h2>TOP MASS</h2><ol id="leaderboard"></ol><section class="arena-radar" aria-label="Arena radar"><header><b>ARENA RADAR</b><small>TOP 10 + BOSSES</small></header><canvas id="minimap" aria-label="Approximate positions of the player, ten strongest opponents, and bosses"></canvas><p><span class="radar-you">●</span> You <span class="radar-rival">1–10</span> Rivals <span class="radar-boss">◆</span> Boss</p></section></aside>
@@ -100,6 +105,7 @@
       <section class="arena-breaker" id="arena-breaker" hidden><p id="breaker-name">YOU</p><h1>ARENA BREAKER</h1><span id="breaker-target">40,000 MASS REACHED</span></section>
       <div class="rift-alert" id="rift-alert" hidden>VOID RIFT · HUNTERS EMPOWERED</div>
       <div class="toxic-alert" id="toxic-alert" hidden>☣ TOXIC KAMIKAZE · CRAZERS CHARGING HEAVIER TARGETS</div>
+      <div class="mission-alert" id="mission-alert" hidden><small id="mission-alert-phase">MISSION UPDATED</small><b id="mission-alert-title">HUNT THE WEAK</b><span id="mission-alert-copy">Build mass through calculated absorptions.</span></div>
       <section class="pause-overlay" id="pause-overlay" hidden><div><p>PAUSED</p><h1>Take a breath.</h1><button id="resume">Resume</button></div></section>
       <section class="touch-controls" id="touch-controls" aria-label="Touch controls"><div class="joystick" id="joystick"><span id="stick"></span></div></section>
       <footer class="imprint"><button id="open-imprint" type="button">Imprint</button></footer>

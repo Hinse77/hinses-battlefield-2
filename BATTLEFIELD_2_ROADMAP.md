@@ -1,5 +1,12 @@
 # Hinses Battlefield 2.0
 
+## Release candidate 1
+
+- Tactical four-stage mission guidance for clearer early, mid and endgame goals.
+- Distinct Interceptor, Assimilator and Aegis visual signatures in the arena.
+- Luminous world boundary, named arena sectors and upgraded particle rendering.
+- Responsive mission UI for desktop and mobile without changing Battlefield 1.
+
 Battlefield 2.0 is developed in the isolated `battlefield-2` branch and worktree. The public version 1 remains on `main` and is not changed by this project.
 
 ## Product pillars

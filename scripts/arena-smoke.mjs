@@ -143,6 +143,11 @@ expect(/difficulty === "all"/.test(read("api/balance.ts")) && /slice\(0, 100\)/.
 expect(/capturePhaseSnapshot\("1:00"\)/.test(game) && /capturePhaseSnapshot\("3:00"\)/.test(game) && /player:\{ count:1/.test(game), "Player and mid-round phase snapshots are incomplete.");
 expect(/captureLiveTelemetry/.test(game) && /hb2-live-stats/.test(game) && /status:"active"/.test(game), "Live and interrupted-round telemetry is incomplete.");
 expect(/drawArenaAtmosphere/.test(game) && /drawOrganismCore/.test(game) && /Battlefield 2 command deck/.test(css), "Battlefield 2 visual identity is incomplete.");
+expect(/mission-status/.test(html) && /mission-alert/.test(html) && /updateMissionUi/.test(game) && /MISSION 01/.test(html), "Battlefield 2 tactical mission guidance is incomplete.");
+expect(/drawDoctrineAura/.test(game) && /this\.drawDoctrineAura\(ctx\)/.test(game) && /interceptor/.test(game) && /assimilator/.test(game) && /aegis/.test(game), "Combat doctrines do not have distinct in-arena signatures.");
+expect(/drawWorldBoundary/.test(game) && /NOVA SECTOR/.test(game) && /VANGUARD SECTOR/.test(game) && /APEX SECTOR/.test(game), "The Battlefield 2 arena lacks readable sector identity and boundaries.");
+expect(/drawThreatIndicator/.test(game) && /mass>p\.mass\*1\.15/.test(game) && /d<850/.test(game), "Nearby larger threats are not telegraphed fairly.");
+expect(/\.mission-status/.test(css) && /\.mission-alert/.test(css) && /@keyframes mission-arrival/.test(css), "Mission guidance is not visually integrated.");
 expect(!/localStorage\.(getItem|setItem|removeItem)\("hinses-/.test(game) && !/localStorage\.(getItem|setItem|removeItem)\("mass-arena-/.test(game), "Battlefield 2 still writes into a Version 1 browser namespace.");
 expect(["admin-analytics.ts","analytics.ts","balance.ts","guestbook.ts","leaderboard.ts","ranks.ts"].every(file => /hinses-battlefield-2:/.test(read(`api/${file}`))), "A server function still uses the Version 1 database namespace.");
 
