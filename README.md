@@ -14,12 +14,16 @@ An isolated next-generation branch of the TypeScript/Vite/Canvas arena game. Ver
 
 Release candidate `2.0.0-rc.2` is playable on desktop and mobile, production-build clean, and isolated from Battlefield 1. Run `npm run test:release` for the complete automated publication gate.
 
+## Live release
+
+- Play: https://hinses-battlefield-2.vercel.app
+- Source: https://github.com/Hinse77/hinses-battlefield-2
+- Status: RC2 is live as a completely separate project; Battlefield 1 remains untouched.
+- Shared services: the game currently uses its safe browser fallback until an Upstash database is connected to the Vercel project.
+
 ## Publish with Vercel
 
-1. Create a separate GitHub repository named `hinses-battlefield-2` and upload this complete structure, including `src`, `public`, and `api`.
-2. Import the repository in Vercel.
-3. Use the default Vite settings: build command `npm run build`, output directory `dist`.
-4. Deploy.
+The project is already connected to GitHub and Vercel. Future releases only need a commit and push to `main`; Vercel then builds and publishes them automatically. The default Vite settings are build command `npm run build` and output directory `dist`.
 
 ## Local development
 

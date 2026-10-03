@@ -2,6 +2,13 @@
 
 Diese Version ist absichtlich ein eigenes Projekt. Das bestehende Repository und die bestehende Vercel-Seite von Version 1 werden nicht ersetzt.
 
+## Aktueller Stand
+
+- Live-Spiel: https://hinses-battlefield-2.vercel.app
+- GitHub: https://github.com/Hinse77/hinses-battlefield-2
+- Automatische Veröffentlichung: Jeder Push auf `main` startet künftig selbstständig einen neuen Vercel-Build.
+- Noch offen: Ein eigener Upstash-Speicher muss einmalig mit dem Vercel-Projekt verbunden werden, damit Ranglisten und Statistiken browserübergreifend geteilt werden. Ohne ihn funktioniert das Spiel vollständig, speichert diese Daten aber nur im jeweiligen Browser.
+
 ## Einmalig: GitHub Desktop installieren
 
 Installiere GitHub Desktop von https://desktop.github.com und melde dich mit deinem GitHub-Konto an.
