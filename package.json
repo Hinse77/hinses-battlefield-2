@@ -1,12 +1,13 @@
 {
   "name": "hinses-battlefield-2",
   "private": true,
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0-rc.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --base=./",
-    "test": "node scripts/arena-smoke.mjs"
+    "test": "node scripts/arena-smoke.mjs",
+    "test:release": "npm run build && node scripts/arena-smoke.mjs && node scripts/release-smoke.mjs"
   },
   "dependencies": {
     "@upstash/redis": "^1.36.0"

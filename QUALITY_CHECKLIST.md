@@ -1,5 +1,14 @@
 # Qualitätskatalog
 
+## Automatisches RC2-Veröffentlichungstor
+
+- Vor jeder Veröffentlichung `npm run test:release` ausführen.
+- Prüft das kompilierte Produktionspaket und seine versionierten Dateien.
+- Simuliert 100 Missionszustände und 100 Gefahrenwarnungen.
+- Prüft alle Doktrinen, Mobil-Breakpoints und 44-Pixel-Touchflächen.
+- Bestätigt bei allen Serverfunktionen die getrennte Battlefield-2-Datenbank.
+- Kontrolliert Vercel-Buildkonfiguration und die kanonische Battlefield-2-Adresse.
+
 ## Erledigt
 
 - Punktesystem: Masse ist die Grundlage; Kombos und schnelle Siege geben begrenzte Boni.

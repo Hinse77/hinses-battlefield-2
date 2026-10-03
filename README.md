@@ -12,7 +12,7 @@ An isolated next-generation branch of the TypeScript/Vite/Canvas arena game. Ver
 - Separate browser storage, replay codes (`HB2-*`), Redis namespaces, Hall of Fame and balance telemetry.
 - Vanguard/Normal onboarding by default; Veteran and Apex remain advanced challenges.
 
-Release candidate `2.0.0-rc.1` is playable on desktop and mobile, production-build clean, and isolated from Battlefield 1.
+Release candidate `2.0.0-rc.2` is playable on desktop and mobile, production-build clean, and isolated from Battlefield 1. Run `npm run test:release` for the complete automated publication gate.
 
 ## Publish with Vercel
 
