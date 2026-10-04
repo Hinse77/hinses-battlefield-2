@@ -1,6 +1,6 @@
 # Qualitätskatalog
 
-## Automatisches RC3-Veröffentlichungstor
+## Automatisches RC4-Veröffentlichungstor
 
 - Vor jeder Veröffentlichung `npm run test:release` ausführen.
 - Prüft das kompilierte Produktionspaket und seine versionierten Dateien.
