@@ -18,7 +18,7 @@ const apiFiles = fs.readdirSync(path.join(root, "api")).filter((file) => file.en
 const assetFiles = fs.readdirSync(path.join(root, "dist", "assets"));
 
 expect(pkg.name === "hinses-battlefield-2", "Release package has the wrong project identity.");
-expect(pkg.version === "2.0.0-rc.4", "Release package version is not RC4.");
+expect(pkg.version === "2.0.0-rc.5", "Release package version is not RC5.");
 expect(pkg.scripts?.test === "node scripts/arena-smoke.mjs", "Core arena smoke command changed unexpectedly.");
 expect(vercel.framework === "vite" && vercel.buildCommand === "npm run build" && vercel.outputDirectory === "dist", "Vercel production settings are incomplete.");
 expect(assetFiles.some((file) => file.endsWith(".js")) && assetFiles.some((file) => file.endsWith(".css")), "Production assets were not emitted.");
@@ -34,6 +34,8 @@ expect(!/localStorage\.(?:getItem|setItem|removeItem)\("hinses-/.test(game), "Ba
 expect(/drawDoctrineAura/.test(game) && /drawThreatIndicator/.test(game) && /drawWorldBoundary/.test(game), "Release-critical arena readability effects are missing.");
 expect(/visibleWorldBounds/.test(game) && /visibleFood/.test(game) && /visibleOrganisms/.test(game), "Viewport rendering optimization is missing.");
 expect(/nextMinimapDraw/.test(game) && /now\+80/.test(game), "Radar rendering is not frame-rate limited.");
+expect(/syncAmbientMusic/.test(game) && /this\.alive && !this\.paused && !document\.hidden/.test(game), "Ambient music is not bound to an active visible round.");
+expect(/visibilitychange/.test(game) && /pagehide/.test(game), "Ambient music does not stop reliably when the game tab is left.");
 expect(/\.mission-status/.test(css) && /\.mission-alert/.test(css), "Mission guidance styling is missing.");
 expect(/@media \(max-width:540px\)/.test(css) && /@media \(max-width:430px\)/.test(css), "Mobile release breakpoints are incomplete.");
 expect(/min-height:44px/.test(css), "Mobile primary touch targets are smaller than the release baseline.");
